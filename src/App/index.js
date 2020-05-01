@@ -9,12 +9,10 @@ import PokemonDeck from './containers/PokemonDeck';
 function App() {
   return (
     <Grommet theme={theme} full>
-      <Box fill>
-        <AppBar />
-        <Router>
-          <PokemonDeck path="/" />
-        </Router>
-      </Box>
+      <AppBar />
+      <Router>
+        <PokemonDeck path="/" />
+      </Router>
     </Grommet>
   );
 }
