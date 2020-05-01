@@ -12,6 +12,7 @@ function AppBar() {
       align="center"
       justify="between"
       pad={{ left: 'medium', right: 'medium', vertical: 'medium' }}
+      flex={false}
     >
       <Box direction="row">
         <Image
