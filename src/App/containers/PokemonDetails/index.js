@@ -4,6 +4,7 @@ import { useStoreState, useStoreActions } from 'easy-peasy';
 
 import PokemonSprites from '../../components/PokemonSprites';
 import PokemonStats from '../../components/PokemonStats';
+import PokemonAbility from '../../components/PokemonAbility';
 
 function PokemonDetails({ id }) {
   const { isLoading, error, selected, details } = useStoreState(
@@ -70,8 +71,19 @@ function PokemonDetails({ id }) {
                 ))}
               </Box>
             </Tab>
+            <Tab title="Moves">
+              <Box border="small" pad="small" margin="medium" round>
+                {moves.map((item) => (
+                  <PokemonAbility name={item.move.name} />
+                ))}
+              </Box>
+            </Tab>
             <Tab title="Abilities">
-              <Box border="small" pad="small" margin="medium" round></Box>
+              <Box border="small" pad="small" margin="medium" round>
+                {abilities.map((item) => (
+                  <PokemonAbility name={item.ability.name} />
+                ))}
+              </Box>
             </Tab>
           </Tabs>
         </Box>
