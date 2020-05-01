@@ -3,14 +3,14 @@ import { Box, Image } from 'grommet';
 
 function PokemonSprites({
   name,
-  back_default: backDefault,
-  front_default: frontDefault,
-  back_female: backFemale,
-  front_female: frontFemale,
-  back_shiny: backShiny,
-  front_shiny: frontShiny,
-  back_shiny_female: backShinyFemale,
-  front_shiny_female: frontShinyFemale,
+  backDefault,
+  frontDefault,
+  backFemale,
+  frontFemale,
+  backShiny,
+  frontShiny,
+  backShinyFemale,
+  frontShinyFemale,
 }) {
   const [currentFrame, setCurrentFrame] = useState(frontDefault);
 

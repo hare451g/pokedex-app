@@ -37,8 +37,19 @@ function PokemonDetails({ id }) {
     } = details;
     return (
       <Box direction="column" justify="center" align="center" pad="small">
-        <PokemonSprites {...sprites} />
-        <Heading size="medium">{name}</Heading>
+        <Heading size="medium" a11yTitle={`pokemon name ${name}`}>
+          {name}
+        </Heading>
+        <PokemonSprites
+          backDefault={sprites.back_default}
+          frontDefault={sprites.front_default}
+          backFemale={sprites.back_female}
+          frontFemale={sprites.front_female}
+          backShiny={sprites.back_shiny}
+          frontShiny={sprites.front_shiny}
+          backShinyFemale={sprites.back_shiny_female}
+          frontShinyFemale={sprites.front_shiny_female}
+        />
         <Box fill>
           <Tabs>
             <Tab title="Forms">
