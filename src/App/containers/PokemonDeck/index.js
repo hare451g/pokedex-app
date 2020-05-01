@@ -13,7 +13,6 @@ function PokemonDeck() {
   );
 
   const onMore = () => {
-    console.log('moar', next, count);
     if (next) {
       fetchPokemonThunk({ nextUrl: next });
     }
