@@ -23,10 +23,10 @@ const thunks = {
 
       // get front_default image from sprites
       const resultWithSprite = response.data.results.map(({ name, url }) => {
-        const id = url.slice(url.length - 2, -1);
+        const id = url.slice(0, -1).split('/').pop();
         const sprite = `${SPRITES_BASE_URL}/pokemon/${id}.png`;
 
-        return { name, url, sprite };
+        return { id, name, url, sprite };
       });
 
       actions.setResult({
