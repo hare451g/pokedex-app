@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { BASE_URL, SPRITES_BASE_URL } from '../constants';
 
-async function fetchPokemonList({ offset = 20, limit = 20, nextUrl = null }) {
+async function fetchPokemonList({ offset = 0, limit = 20, nextUrl = null }) {
   try {
     let url = `${BASE_URL}/pokemon/`;
 
@@ -13,7 +13,7 @@ async function fetchPokemonList({ offset = 20, limit = 20, nextUrl = null }) {
       },
     };
 
-    if (next) {
+    if (nextUrl) {
       url = nextUrl;
     }
 
