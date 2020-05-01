@@ -1,8 +1,5 @@
 const theme = {
   global: {
-    colors: {
-      brand: 'white',
-    },
     font: {
       family: 'Inter',
       size: '16px',
