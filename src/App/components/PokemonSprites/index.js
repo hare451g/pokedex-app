@@ -40,6 +40,7 @@ function PokemonSprites({
             fit="contain"
             onClick={() => setCurrentFrame(sprite)}
             a11yTitle={`sprites item of ${name}`}
+            height={64}
           />
         ))}
       </Box>
