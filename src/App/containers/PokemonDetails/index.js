@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
-import { Box, Image, Heading, Tabs, Tab } from 'grommet';
+import { Box, Heading, Tabs, Tab } from 'grommet';
+import { LinkPrevious } from 'grommet-icons';
 import { useStoreState, useStoreActions } from 'easy-peasy';
+import { Link } from '@reach/router';
 
 import PokemonSprites from '../../components/PokemonSprites';
 import PokemonStats from '../../components/PokemonStats';
@@ -31,24 +33,22 @@ function PokemonDetails({ id }) {
     const {
       abilities,
       base_experience: baseExperience,
-      forms,
-      game_indices: gameIndices,
       height,
-      held_items: heldItems,
-      is_default: isDefault,
       location_area_encounters: locationAreaEncounters,
       moves,
       name,
-      order,
-      species,
       sprites,
       stats,
-      types,
       weight,
     } = details;
 
     return (
       <Box direction="column" justify="center" align="center" pad="small">
+        <Box alignSelf="flex-start" fill>
+          <Link to="/">
+            <LinkPrevious />
+          </Link>
+        </Box>
         <Heading size="medium" a11yTitle={`pokemon name ${name}`}>
           {name}
         </Heading>
@@ -69,6 +69,10 @@ function PokemonDetails({ id }) {
               <Box border="small" pad="small" margin="medium" round>
                 <PokemonStats baseStat={`${height / 10} meter`} name="Height" />
                 <PokemonStats baseStat={`${weight / 10} kg`} name="Weight" />
+                <PokemonStats
+                  baseStat={`${baseExperience} XP`}
+                  name="Base Experience"
+                />
               </Box>
             </Tab>
             <Tab title="Stats">
