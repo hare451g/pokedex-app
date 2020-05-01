@@ -7,15 +7,25 @@ import PokemonStats from '../../components/PokemonStats';
 import PokemonAbility from '../../components/PokemonAbility';
 
 function PokemonDetails({ id }) {
-  const { isLoading, error, selected, details } = useStoreState(
-    (state) => state.pokemon
-  );
-
+  const { isLoading, error, details } = useStoreState((state) => state.pokemon);
   const { fetchPokemonThunk } = useStoreActions((actions) => actions.pokemon);
 
   useEffect(() => {
     fetchPokemonThunk({ id });
   }, [fetchPokemonThunk]);
+
+  if (isLoading) {
+    return <Box>Loading contents</Box>;
+  }
+
+  if (error) {
+    return (
+      <Box>
+        <h3>An Error occured</h3>
+        <p>{error}</p>
+      </Box>
+    );
+  }
 
   if (details) {
     const {
