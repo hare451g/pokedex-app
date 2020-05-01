@@ -42,6 +42,7 @@ function PokemonDetails({ id }) {
           {name}
         </Heading>
         <PokemonSprites
+          name={name}
           backDefault={sprites.back_default}
           frontDefault={sprites.front_default}
           backFemale={sprites.back_female}
