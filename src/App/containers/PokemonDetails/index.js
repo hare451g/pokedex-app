@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Image, Heading } from 'grommet';
+import { Box, Image, Heading, Tabs, Tab } from 'grommet';
 import { useStoreState, useStoreActions } from 'easy-peasy';
 
 import PokemonSprites from '../../components/PokemonSprites';
@@ -36,12 +36,32 @@ function PokemonDetails({ id }) {
       weight,
     } = details;
     return (
-      <Box direction="column" justify="center" align="flex-start" pad="small">
+      <Box direction="column" justify="center" align="center" pad="small">
         <PokemonSprites {...sprites} />
         <Heading size="medium">{name}</Heading>
-        {stats.map((stat) => (
-          <PokemonStats {...stat} />
-        ))}
+        <Box fill>
+          <Tabs>
+            <Tab title="Forms">
+              <Box border="small" pad="small" margin="medium" round>
+                <PokemonStats baseStat={height} name="Height" />
+                <PokemonStats baseStat={weight} name="Weight" />
+              </Box>
+            </Tab>
+            <Tab title="Stats">
+              <Box border="small" pad="small" margin="medium" round>
+                {stats.map((item) => (
+                  <PokemonStats
+                    baseStat={item.base_stat}
+                    name={item.stat.name}
+                  />
+                ))}
+              </Box>
+            </Tab>
+            <Tab title="Abilities">
+              <Box border="small" pad="small" margin="medium" round></Box>
+            </Tab>
+          </Tabs>
+        </Box>
       </Box>
     );
   } else {
