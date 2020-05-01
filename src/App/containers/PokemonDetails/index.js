@@ -35,6 +35,7 @@ function PokemonDetails({ id }) {
       types,
       weight,
     } = details;
+
     return (
       <Box direction="column" justify="center" align="center" pad="small">
         <Heading size="medium" a11yTitle={`pokemon name ${name}`}>
@@ -54,8 +55,8 @@ function PokemonDetails({ id }) {
           <Tabs>
             <Tab title="Forms">
               <Box border="small" pad="small" margin="medium" round>
-                <PokemonStats baseStat={height} name="Height" />
-                <PokemonStats baseStat={weight} name="Weight" />
+                <PokemonStats baseStat={`${height / 10} meter`} name="Height" />
+                <PokemonStats baseStat={`${weight / 10} kg`} name="Weight" />
               </Box>
             </Tab>
             <Tab title="Stats">
