@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grommet, Box } from 'grommet';
+import { Router } from '@reach/router';
 
 import theme from './configs/theme';
 import AppBar from './components/AppBar';
@@ -10,7 +11,9 @@ function App() {
     <Grommet theme={theme} full>
       <Box fill>
         <AppBar />
-        <PokemonDeck />
+        <Router>
+          <PokemonDeck path="/" />
+        </Router>
       </Box>
     </Grommet>
   );
