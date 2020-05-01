@@ -1,8 +1,8 @@
-const pokemon = {
+const initialState = {
   isLoading: false,
   error: null,
   selected: null,
   details: null,
 };
 
-export default pokemon;
+export { initialState };
