@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useStoreActions, useStoreState } from 'easy-peasy';
-import PokemonCard from '../../components/PokemonCard';
 import { Box, InfiniteScroll } from 'grommet';
+
+import PokemonCard from '../../components/PokemonCard';
 
 function PokemonDeck() {
   const { isLoading, error, count, next, results } = useStoreState(
