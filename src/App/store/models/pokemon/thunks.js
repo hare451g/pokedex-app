@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { thunk } from 'easy-peasy';
+import { thunk, action } from 'easy-peasy';
 
 import { BASE_URL } from '../../../constants/pokeapi';
 import { transformResult } from './utils';
@@ -32,6 +32,7 @@ const thunks = {
   fetchPokemonListByType: thunk(async (actions, payload) => {
     try {
       actions.startFetch();
+      actions.setEmptyList();
 
       if (payload.name) {
         const url = `${BASE_URL}/type/${payload.name}`;
@@ -40,6 +41,7 @@ const thunks = {
 
         // get front_default image from sprites
         const pokemons = response.data.pokemon.map((item) => item.pokemon);
+
         const resultWithSprite = transformResult(pokemons);
 
         actions.setListResult({

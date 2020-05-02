@@ -14,16 +14,11 @@ const actions = {
     state.error = payload;
   }),
 
+  setSelected: action((state, payload) => {
+    state.selected = payload.selected;
+  }),
+
   setResult: action((state, payload) => {
-    state.details = payload;
-    state.error = null;
-  }),
-
-  setEmptyList: action((state, payload) => {
-    state.results = [];
-  }),
-
-  setListResult: action((state, payload) => {
     state.count = payload.count;
     state.next = payload.next;
     state.previous = payload.previous;

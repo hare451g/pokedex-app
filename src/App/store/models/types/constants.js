@@ -1,7 +1,7 @@
 const initialState = {
   isLoading: false,
   error: null,
-  selected: 'All',
+  selected: 'all types',
   details: null,
   count: 0,
   next: null,
