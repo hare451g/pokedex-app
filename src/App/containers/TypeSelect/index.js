@@ -28,7 +28,7 @@ function TypeSelect() {
     );
   }
 
-  const options = ['all', ...results.map((item) => item.name)];
+  const options = ['all types', ...results.map((item) => item.name)];
 
   return (
     <Select

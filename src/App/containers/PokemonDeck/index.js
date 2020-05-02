@@ -10,19 +10,37 @@ function PokemonDeck() {
   );
   const selectedType = useStoreState((state) => state.types.selected);
 
-  const { fetchPokemonListThunk, fetchPokemonListByType } = useStoreActions(
-    (actions) => actions.pokemon
-  );
+  const {
+    fetchPokemonListThunk,
+    fetchPokemonListByType,
+    setEmptyList,
+  } = useStoreActions((actions) => actions.pokemon);
 
   const onMore = () => {
-    if (next) {
+    if (selectedType === 'all types' && next) {
       fetchPokemonListThunk({ nextUrl: next });
     }
   };
 
   useEffect(() => {
-    fetchPokemonListThunk({ limit: 10, offset: 0 });
+    setEmptyList();
+    if (selectedType && selectedType !== 'all types') {
+      fetchPokemonListByType({ name: selectedType });
+    } else {
+      fetchPokemonListThunk({ limit: 10, offset: 0 });
+    }
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (selectedType && selectedType !== 'all types') {
+        fetchPokemonListByType({ name: selectedType });
+      } else {
+        setEmptyList();
+        fetchPokemonListThunk({ limit: 10, offset: 0 });
+      }
+    }
+  }, [selectedType]);
 
   return (
     <Box
