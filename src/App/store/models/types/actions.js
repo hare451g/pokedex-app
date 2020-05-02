@@ -14,8 +14,15 @@ const actions = {
     state.error = payload;
   }),
 
+  setSelected: action((state, payload) => {
+    state.selected = payload.selected;
+  }),
+
   setResult: action((state, payload) => {
-    state.details = payload;
+    state.count = payload.count;
+    state.next = payload.next;
+    state.previous = payload.previous;
+    state.results = [...state.results, ...payload.results];
     state.error = null;
   }),
 };

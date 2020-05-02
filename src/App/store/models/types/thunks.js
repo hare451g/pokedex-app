@@ -50,7 +50,7 @@ const thunks = {
       // get front_default image from sprites
       const transformedResult = transformResult(response.data.results);
 
-      actions.setListResult({
+      actions.setResult({
         ...response.data,
         results: transformedResult,
       });

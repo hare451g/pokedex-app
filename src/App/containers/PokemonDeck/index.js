@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import { Box, InfiniteScroll } from 'grommet';
 
@@ -8,8 +8,9 @@ function PokemonDeck() {
   const { isLoading, error, count, next, results } = useStoreState(
     (state) => state.pokemon
   );
+  const selectedType = useStoreState((state) => state.types.selected);
 
-  const { fetchPokemonListThunk } = useStoreActions(
+  const { fetchPokemonListThunk, fetchPokemonListByType } = useStoreActions(
     (actions) => actions.pokemon
   );
 
@@ -22,6 +23,12 @@ function PokemonDeck() {
   useEffect(() => {
     fetchPokemonListThunk({ limit: 10, offset: 0 });
   }, [fetchPokemonListThunk]);
+
+  useEffect(() => {
+    if (selectedType && selectedType !== 'all') {
+      fetchPokemonListByType({ name: selectedType });
+    }
+  }, [selectedType]);
 
   return (
     <Box
@@ -39,9 +46,11 @@ function PokemonDeck() {
         </div>
       ) : (
         results.length > 0 && (
-          <InfiniteScroll items={results} step={10} onMore={onMore}>
-            {(pokemon) => <PokemonCard {...pokemon} key={pokemon.id} />}
-          </InfiniteScroll>
+          <>
+            <InfiniteScroll items={results} step={10} onMore={onMore}>
+              {(pokemon) => <PokemonCard {...pokemon} key={pokemon.id} />}
+            </InfiniteScroll>
+          </>
         )
       )}
       {isLoading && <span>Loading contents . . .</span>}

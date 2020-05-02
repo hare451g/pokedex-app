@@ -19,6 +19,10 @@ const actions = {
     state.error = null;
   }),
 
+  setEmptyList: action((state, payload) => {
+    state.results = [];
+  }),
+
   setListResult: action((state, payload) => {
     state.count = payload.count;
     state.next = payload.next;
