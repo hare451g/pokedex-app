@@ -2,11 +2,11 @@ import { createStore } from 'easy-peasy';
 
 // models
 import pokemon from './models/pokemon';
-import pokemonList from './models/pokemonList';
+import types from './models/types';
 
 const storeModel = {
   pokemon,
-  pokemonList,
+  types,
 };
 
 const store = createStore(storeModel);

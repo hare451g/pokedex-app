@@ -14,6 +14,10 @@ const actions = {
     state.error = payload;
   }),
 
+  setSelected: action((state, payload) => {
+    state.selected = payload.selected;
+  }),
+
   setResult: action((state, payload) => {
     state.count = payload.count;
     state.next = payload.next;
