@@ -6,22 +6,22 @@ import PokemonCard from '../../components/PokemonCard';
 
 function PokemonDeck() {
   const { isLoading, error, count, next, results } = useStoreState(
-    (state) => state.pokemonList
+    (state) => state.pokemon
   );
 
-  const { fetchPokemonThunk } = useStoreActions(
-    (actions) => actions.pokemonList
+  const { fetchPokemonListThunk } = useStoreActions(
+    (actions) => actions.pokemon
   );
 
   const onMore = () => {
     if (next) {
-      fetchPokemonThunk({ nextUrl: next });
+      fetchPokemonListThunk({ nextUrl: next });
     }
   };
 
   useEffect(() => {
-    fetchPokemonThunk({ limit: 10, offset: 0 });
-  }, [fetchPokemonThunk]);
+    fetchPokemonListThunk({ limit: 10, offset: 0 });
+  }, [fetchPokemonListThunk]);
 
   return (
     <Box

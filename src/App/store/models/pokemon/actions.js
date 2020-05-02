@@ -18,6 +18,14 @@ const actions = {
     state.details = payload;
     state.error = null;
   }),
+
+  setListResult: action((state, payload) => {
+    state.count = payload.count;
+    state.next = payload.next;
+    state.previous = payload.previous;
+    state.results = [...state.results, ...payload.results];
+    state.error = null;
+  }),
 };
 
 export default actions;
