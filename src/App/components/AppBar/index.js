@@ -1,10 +1,13 @@
-import React from 'react';
-import { Box, Heading, Image } from 'grommet';
+import React, { useContext } from 'react';
+import { Box, Heading, Image, ResponsiveContext } from 'grommet';
 import { Menu } from 'grommet-icons';
 
 import PokeBallImage from '../../assets/images/poke-ball.png';
+import TypeSelect from '../../containers/TypeSelect';
 
 function AppBar() {
+  const size = useContext(ResponsiveContext);
+
   return (
     <Box
       tag="header"
@@ -30,9 +33,7 @@ function AppBar() {
           PokéDex
         </Heading>
       </Box>
-      <Box direction="row">
-        <Menu />
-      </Box>
+      <Box direction="row">{size === 'small' ? <Menu /> : <TypeSelect />}</Box>
     </Box>
   );
 }

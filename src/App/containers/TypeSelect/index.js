@@ -28,12 +28,13 @@ function TypeSelect() {
     );
   }
 
-  const options = results.map((item) => item.name);
+  const options = ['all', ...results.map((item) => item.name)];
 
   return (
     <Select
       options={options}
       value={selected}
+      placeholder="Filter by Type"
       onChange={({ option }) => setSelected({ selected: option })}
       multiple={false}
     />
